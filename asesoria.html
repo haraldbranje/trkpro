@@ -1,0 +1,497 @@
+<!DOCTYPE html><html class="dark" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>DIRECCIÓN ESTRATÉGICA | PROYECTO ARTÍSTICO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Orbitron:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Orbitron:wght@100..900&amp;family=Space+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        :root {
+            --primary: #e60021;
+            --surface: #131314;
+        }
+        body {
+            background-color: var(--surface);
+            font-family: 'Space Mono', monospace;
+            color: #e4e2e2;
+            overflow-x: hidden;
+        }
+        .font-headline { font-family: 'Anton', sans-serif; }
+        .font-label { font-family: 'Orbitron', sans-serif; }
+        
+        /* Deconstructed Glitch Effects */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 83px, 0); }
+            20% { clip: rect(80px, 9999px, 32px, 0); }
+            40% { clip: rect(100px, 9999px, 50px, 0); }
+            60% { clip: rect(10px, 9999px, 90px, 0); }
+            80% { clip: rect(60px, 9999px, 40px, 0); }
+            100% { clip: rect(90px, 9999px, 10px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 20px, 0); }
+            20% { clip: rect(40px, 9999px, 80px, 0); }
+            40% { clip: rect(90px, 9999px, 10px, 0); }
+            60% { clip: rect(20px, 9999px, 100px, 0); }
+            80% { clip: rect(50px, 9999px, 60px, 0); }
+            100% { clip: rect(10px, 9999px, 90px, 0); }
+        }
+
+        .clip-polygon-1 { clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%); }
+        .clip-polygon-2 { clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+        .clip-polygon-3 { clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%); }
+
+        .outline-text {
+            -webkit-text-stroke: 2px var(--primary);
+            color: transparent;
+        }
+
+        /* Scanline Effect */
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 10;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .red-glow {
+            box-shadow: 0 0 20px rgba(230, 0, 33, 0.4);
+        }
+
+        .grid-line-effect {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .huge-bg-text {
+            font-size: 20vw;
+            line-height: 0.8;
+            color: rgba(255,255,255,0.02);
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "background": "#131314",
+                      "inverse-on-surface": "#303030",
+                      "inverse-primary": "#c0001a",
+                      "secondary-container": "#464747",
+                      "outline": "#af8783",
+                      "secondary-fixed": "#e3e2e2",
+                      "surface": "#131314",
+                      "on-tertiary-container": "#f9f9f9",
+                      "on-secondary": "#303031",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#c7c6c6",
+                      "on-secondary-fixed-variant": "#464747",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "surface-container": "#1f2020",
+                      "surface-variant": "#343535",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "surface-dim": "#131314",
+                      "on-background": "#e4e2e2",
+                      "primary-container": "#e60021",
+                      "on-tertiary": "#2f3131",
+                      "inverse-surface": "#e4e2e2",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#ffdad6",
+                      "on-primary-fixed-variant": "#930011",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-surface-variant": "#e8bcb8",
+                      "tertiary": "#c6c6c7",
+                      "on-secondary-container": "#b6b5b5",
+                      "primary": "#ffb3ad",
+                      "on-error": "#690005",
+                      "surface-container-high": "#2a2a2a",
+                      "tertiary-fixed": "#e2e2e2",
+                      "outline-variant": "#5e3f3c",
+                      "surface-container-highest": "#343535",
+                      "on-primary-fixed": "#410003",
+                      "on-primary-container": "#fff7f6",
+                      "secondary": "#c7c6c6",
+                      "surface-tint": "#ffb3ad",
+                      "on-surface": "#e4e2e2",
+                      "tertiary-container": "#717373",
+                      "on-primary": "#680009",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-bright": "#393939",
+                      "surface-container-low": "#1b1c1c",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Anton"],
+                      "display": ["Anton"],
+                      "body": ["Space Mono"],
+                      "label": ["Orbitron"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- Top Navigation (From JSON) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 mix-blend-difference border-b-2 border-primary border-dashed">
+<div class="flex items-center gap-4 transform -skew-x-12">
+<span class="text-headline-lg-mobile font-headline text-primary glitch-text outline-text" data-text="DIRECCIÓN ESTRATÉGICA">DIRECCIÓN ESTRATÉGICA</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-label text-[14px] tracking-[0.3em] uppercase hover:text-primary transform hover:-skew-x-12 transition-transform" href="index.html">INICIO</a>
+<a class="text-primary font-bold border-b-4 border-primary pb-1 font-label text-[14px] tracking-[0.3em] uppercase transform hover:skew-x-12 transition-transform" href="asesoria.html">ASESORÍA</a>
+<a class="text-on-surface-variant font-label text-[14px] tracking-[0.3em] uppercase hover:text-primary transform hover:skew-y-3 transition-transform" href="tarifario.html">TARIFARIO</a>
+</nav>
+<a href="https://wa.me/56966362642" target="_blank" rel="noopener noreferrer" class="bg-transparent border-2 border-primary-container text-primary-container px-6 py-2 font-label text-[12px] tracking-widest font-bold hover:bg-primary-container hover:text-white transition-all transform rotate-2 inline-block">
+            INICIAR PROYECTO
+        </a>
+</header>
+<!-- Side Navigation (From JSON) -->
+<main class="pt-20 mx-auto overflow-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col justify-center items-center px-8 text-center grid-line-effect bg-surface-container-low mb-12 mt-12 clip-polygon-2">
+<div class="huge-bg-text left-[-10%] transform rotate-12 top-1/2">STRATEGY</div>
+<div class="huge-bg-text bottom-1/4 right-[-10%] transform -rotate-12 outline-text">ARTIST</div>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-background z-10 mix-blend-overlay"></div>
+<div class="relative z-20 max-w-4xl transform -rotate-2">
+<div class="mb-8 inline-block relative">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div>
+<img alt="Troke Produczone Logo" class="h-48 md:h-64 mx-auto relative z-10 rounded-full" src="https://lh3.googleusercontent.com/aida/AP1WRLuGSRtJ_eufCtlJ02fQmfxJU9R5Nm5ywQF08axHVxZLLuoOJwaBDrL5mhV0DKkDKPzX8xH5euQs47N77uEmVvbUOtfDF5zX01kC6Tt_oumRx2T3hLT2r_WIJNMwNDckv6T_LUYLj2Mcv8R8mjuJJG0Uu50b3dWEZl8yinWESZVbck727opbcujz1AW9_pioil7IQzRBxBEfpWxGRdPoG2gH88U9kQ0qaw4Czerbxk1IdZMYn7BW751O1rpMWwrJ69gL-VUfKyCROw">
+</div>
+<h1 class="font-headline text-7xl md:text-[10rem] leading-[0.8] tracking-tighter mb-6 text-on-surface uppercase glitch-text" data-text="Dirección Estratégica">
+                    Dirección Estratégica <br>
+<span class="text-primary-container outline-text inline-block transform skew-x-12">para Artistas</span>
+</h1>
+<div class="bg-primary text-black p-4 inline-block transform rotate-3 mb-10 border-4 border-dashed border-black shadow-[10px_10px_0px_rgba(0,0,0,1)] dark:shadow-[10px_10px_0px_rgba(255,255,255,0.1)]">
+<p class="font-body text-xl md:text-2xl font-bold max-w-3xl mx-auto">Convierto ideas musicales en proyectos profesionales mediante estrategia, planificación y ejecución.</p>
+</div>
+<br>
+<p class="font-label text-sm tracking-[0.5em] text-primary mb-12 uppercase bg-black/50 inline-block p-2 border-l-8 border-primary">
+                    [ PLANES PERSONALIZADOS // ALTO RENDIMIENTO ARTÍSTICO ]
+                </p>
+<div class="flex flex-wrap justify-center gap-8 mt-8">
+<a href="https://wa.me/56966362642" target="_blank" rel="noopener noreferrer" class="bg-primary-container text-white px-12 py-6 font-headline text-3xl tracking-wide hover:scale-110 transition-transform border-4 border-transparent hover:border-white shadow-[0_0_30px_rgba(230,0,33,0.8)] uppercase transform -skew-x-12 inline-block">
+                        Comenzar Ahora
+                    </a>
+
+</div>
+</div>
+<!-- Background Image Integration -->
+<div class="absolute bottom-0 left-0 w-1/2 opacity-40 pointer-events-none grayscale mix-blend-luminosity transform scale-x-[-1]">
+<img class="w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJv7k9GWeq58Hblv7OqC-K7w_EnLco4iZWGv_QsgQn73CuuclTw-w8laYvdbxh7ru0ufCpBMSyy6v0eVjbepdmNXmrhhppVpRiZ-IwYZOMKJS4PmbjcF3-iXGnwbbOmWnNOnx_Ww_bBidKrf_asjQmp-kM9bfvjldV3KePwFx5zn_kAdVHJ2tQhGzld7jlPInf0psL7Gwfvl6IVmRxhd4evmm8LwDGcMEYOTpu7GGXniwWaul6UDxtRZqxz3NSPGcT1g">
+</div>
+</section>
+<!-- Roadmap Section -->
+<section class="py-24 px-8 max-w-[1200px] mx-auto relative" id="fases">
+<div class="huge-bg-text top-0 left-[-20%] transform -rotate-90 top-1/2">ROADMAP</div>
+<div class="mb-24 flex justify-between items-end border-b-8 border-primary border-dotted pb-8 transform skew-y-2">
+<div>
+<span class="bg-primary text-black px-2 py-1 font-label text-xs tracking-[0.3em] font-bold">SYSTEM_PATHWAY</span>
+<h2 class="font-headline text-7xl md:text-9xl uppercase mt-4 outline-text glitch-text" data-text="Vertical Roadmap">Vertical Roadmap</h2>
+</div>
+<span class="font-label text-secondary text-sm tracking-widest border border-secondary p-2 transform rotate-90 origin-right translate-y-12 inline-block">05 PHASES OF GROWTH</span>
+</div>
+<div class="relative pl-4 md:pl-0 space-y-32">
+<!-- Phase 1 -->
+<div class="relative group grid md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-1 hidden md:flex justify-center">
+<div class="w-16 h-16 bg-primary transform rotate-45 flex items-center justify-center font-headline text-3xl text-black shadow-[0_0_20px_rgba(230,0,33,0.8)]">01</div>
+</div>
+<div class="md:col-span-7 bg-surface-container border-2 border-outline-variant p-8 transform hover:scale-105 transition-transform clip-polygon-2 hover:border-primary relative z-10">
+<span class="font-label text-primary text-xs tracking-widest mb-4 block border-b border-primary/30 pb-2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;PHASE_01</span>
+<h3 class="font-headline text-5xl md:text-7xl mb-6 text-white uppercase glitch-text" data-text="DESCUBRIMIENTO">DESCUBRIMIENTO</h3>
+<p class="font-body text-lg text-on-surface-variant mb-8 leading-relaxed">Inmersión profunda en tu identidad. Análisis de objetivos, debilidades, amenazas y fortalezas (DAFO) para definir tu posición en el mercado.</p>
+<ul class="space-y-4 font-label text-xs text-secondary tracking-wider uppercase">
+<li class="flex items-center gap-4"><span class="w-2 h-2 bg-primary transform rotate-45"></span> ENTREVISTA DE IDENTIDAD</li>
+<li class="flex items-center gap-4"><span class="w-2 h-2 bg-primary transform rotate-45"></span> DEFINICIÓN DE TARGET</li>
+<li class="flex items-center gap-4"><span class="w-2 h-2 bg-primary transform rotate-45"></span> ANÁLISIS DAFO</li>
+</ul>
+</div>
+<div class="md:col-span-4 bg-primary text-black p-8 flex flex-col justify-center items-center text-center transform md:-translate-x-12 md:translate-y-12 rotate-3 hover:rotate-0 transition-transform shadow-[15px_15px_0px_rgba(0,0,0,1)] relative z-20 px-12">
+<span class="font-label text-xs tracking-widest mb-4 font-bold border-b-2 border-black pb-1">OUTPUT_RESULT</span>
+<p class="font-headline text-4xl uppercase leading-none">BRIEFING ARTÍSTICO</p>
+</div>
+</div>
+<!-- Phase 2 -->
+<div class="relative group grid md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-4 bg-transparent border-4 border-primary text-primary p-8 flex flex-col justify-center items-center text-center transform md:translate-x-12 md:-translate-y-12 -rotate-3 hover:rotate-0 transition-transform shadow-[15px_15px_0px_rgba(230,0,33,0.3)] relative z-20 order-3 md:order-1 px-12">
+<span class="font-label text-xs tracking-widest mb-4 font-bold border-b-2 border-primary pb-1">OUTPUT_RESULT</span>
+<p class="font-headline text-4xl uppercase leading-none">PLAN ESTRATÉGICO</p>
+</div>
+<div class="md:col-span-7 bg-surface-container-high border-2 border-primary/50 p-8 transform hover:scale-105 transition-transform clip-polygon-3 hover:border-primary relative z-10 order-2 md:order-2">
+<span class="font-label text-primary text-xs tracking-widest mb-4 block border-b border-primary/30 pb-2">PHASE_02</span>
+<h3 class="font-headline text-5xl md:text-7xl mb-6 text-white uppercase glitch-text" data-text="DIRECCIÓN ESTRATÉGICA">DIRECCIÓN ESTRATÉGICA</h3>
+<p class="font-body text-lg text-on-surface-variant mb-8 leading-relaxed">Arquitectura de tu carrera. Definimos el posicionamiento de marca, planificación de hitos y narrativa artística cohesiva.</p>
+<ul class="space-y-4 font-label text-xs text-secondary tracking-wider uppercase">
+<li class="flex items-center gap-4"><span class="w-2 h-2 bg-primary transform rotate-45"></span> POSICIONAMIENTO BRANDING</li>
+<li class="flex items-center gap-4"><span class="w-2 h-2 bg-primary transform rotate-45"></span> PLANIFICACIÓN DE HITOS</li>
+<li class="flex items-center gap-4"><span class="w-2 h-2 bg-primary transform rotate-45"></span> CALENDARIO ESTRATÉGICO</li>
+</ul>
+</div>
+<div class="md:col-span-1 hidden md:flex justify-center order-1 md:order-3">
+<div class="w-16 h-16 border-4 border-primary transform -rotate-45 flex items-center justify-center font-headline text-3xl text-primary shadow-[0_0_20px_rgba(230,0,33,0.8)]">02</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Modular Production Grid -->
+<section class="bg-black py-32 px-8 border-y-8 border-primary border-dashed relative overflow-hidden" id="modulos">
+<div class="huge-bg-text top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-12 opacity-5">MODULES</div>
+<div class="max-w-[1200px] mx-auto relative z-10">
+<div class="mb-24 text-center transform -skew-y-2">
+<span class="bg-white text-black px-4 py-2 font-label text-sm tracking-[0.5em] font-bold inline-block mb-4">PRODUCTION_CORE</span>
+<h2 class="font-headline text-6xl md:text-8xl uppercase mt-2 outline-text">Módulos de Producción</h2>
+<p class="font-body text-primary text-xl max-w-2xl mx-auto mt-6 bg-surface-container p-4 border-l-4 border-primary">"Los módulos se activan bajo demanda según la estrategia definida."</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Fragmented Cards -->
+<div class="bg-surface-container-low p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:rotate-2 relative group overflow-hidden">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="music_note">music_note</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">MUSICAL PRODUCTION</h4>
+</div>
+<div class="bg-surface-container p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:-rotate-2 relative group overflow-hidden mt-8 md:mt-0 lg:mt-12">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="equalizer">equalizer</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">MIXING &amp; MASTERING</h4>
+</div>
+<div class="bg-surface-container-high p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:rotate-3 relative group overflow-hidden">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="album">album</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">COVER ART DESIGN</h4>
+</div>
+<div class="bg-surface-container-highest p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:-rotate-1 relative group overflow-hidden mt-8 md:mt-12 lg:mt-24">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="videocam">videocam</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">VISUALIZER / VIDEO</h4>
+</div>
+<div class="bg-surface-container-highest p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:rotate-1 relative group overflow-hidden lg:-mt-12">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="language">language</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">WEB ECOSYSTEM</h4>
+</div>
+<div class="bg-surface-container-high p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:-rotate-3 relative group overflow-hidden mt-8 md:mt-0">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="article">article</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">ELECTRONIC PRESS KIT</h4>
+</div>
+<div class="bg-surface-container p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:rotate-2 relative group overflow-hidden md:-mt-12">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="branding_watermark">branding_watermark</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">IDENTITY BRANDING</h4>
+</div>
+<div class="bg-surface-container-low p-10 border border-outline-variant hover:border-primary transition-all cursor-crosshair transform hover:-translate-y-4 hover:-rotate-2 relative group overflow-hidden mt-8 md:mt-12">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-black mb-6 relative z-10 block" data-icon="campaign">campaign</span>
+<h4 class="font-headline text-2xl font-bold uppercase relative z-10 group-hover:text-black">PR &amp; MEDIA</h4>
+</div>
+</div>
+</div>
+</section>
+<!-- Lanzamiento y Crecimiento -->
+<section class="py-32 px-8 max-w-[1200px] mx-auto relative">
+<div class="grid md:grid-cols-2 gap-16 relative z-10">
+<div class="border-t-8 border-l-8 border-primary p-12 bg-surface-container clip-polygon-2 transform -rotate-1 hover:rotate-0 transition-all shadow-[20px_20px_0px_rgba(230,0,33,0.2)]">
+<span class="bg-black text-primary px-3 py-1 font-label text-xs tracking-widest mb-6 inline-block">PHASE_04</span>
+<h3 class="font-headline text-6xl mb-6 uppercase">LANZAMIENTO</h3>
+<p class="font-body text-lg text-on-surface mb-8">Ejecución del despliegue. Distribución digital, campañas de ads, calendario de contenido y gestión de impacto.</p>
+<div class="flex items-center gap-4 text-primary bg-black/50 p-4 inline-flex px-8">
+<span class="material-symbols-outlined text-3xl" data-icon="rocket_launch">rocket_launch</span>
+<span class="font-headline text-2xl">ORGANIZED LAUNCH</span>
+</div>
+</div>
+<div class="border-b-8 border-r-8 border-primary p-12 bg-surface-container clip-polygon-3 transform rotate-1 hover:rotate-0 transition-all shadow-[-20px_-20px_0px_rgba(230,0,33,0.2)] mt-16 md:mt-0">
+<span class="bg-black text-primary px-3 py-1 font-label text-xs tracking-widest mb-6 inline-block">PHASE_05</span>
+<h3 class="font-headline text-6xl mb-6 uppercase">CRECIMIENTO</h3>
+<p class="font-body text-lg text-on-surface mb-8">Medición de resultados y optimización. Evolución artística continua basada en datos reales del mercado.</p>
+<div class="flex items-center gap-4 text-primary bg-black/50 p-4 inline-flex px-8">
+<span class="material-symbols-outlined text-3xl" data-icon="trending_up">trending_up</span>
+<span class="font-headline text-2xl">CONTINUOUS DEVELOPMENT</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Methodology Flow -->
+<section class="py-32 px-8 bg-surface-container-lowest relative overflow-hidden" id="metodologia">
+<div class="huge-bg-text top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">FLOW</div>
+<div class="max-w-[1200px] mx-auto relative z-10">
+<h2 class="font-headline text-6xl md:text-8xl uppercase mb-24 text-center glitch-text" data-text="Metodología de Trabajo">Metodología de Trabajo</h2>
+<div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 relative">
+<div class="absolute top-1/2 left-0 w-full h-2 bg-primary/20 hidden md:block transform -translate-y-1/2 border-y border-primary/50 border-dashed"></div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-24 h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-5xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[10px_10px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">D</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-xs tracking-widest mt-8 px-4 py-2 uppercase">DESCUBRIMIENTO</span>
+</div>
+<div class="flex flex-col items-center group relative z-10 md:-translate-y-12">
+<div class="w-24 h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-5xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[10px_10px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">E</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-xs tracking-widest mt-8 px-4 py-2 uppercase">ESTRATEGIA</span>
+</div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-24 h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-5xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[10px_10px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">P</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-xs tracking-widest mt-8 px-4 py-2 uppercase">PRODUCCIÓN</span>
+</div>
+<div class="flex flex-col items-center group relative z-10 md:translate-y-12">
+<div class="w-24 h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-5xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[10px_10px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">L</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-xs tracking-widest mt-8 px-4 py-2 uppercase">LANZAMIENTO</span>
+</div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-24 h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-5xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[10px_10px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">C</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-xs tracking-widest mt-8 px-4 py-2 uppercase">CRECIMIENTO</span>
+</div>
+</div>
+</div>
+<!-- Inmersive background image integration -->
+<div class="absolute inset-0 opacity-20 pointer-events-none mix-blend-color-dodge filter contrast-150 saturate-200 hue-rotate-180">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6teWOGk1kTQfo8XZdCAsf3qBqTX9Xv00WL6yVgcYwqEoD3TePvaVtnP3PeVZskwmnbV2n6dutL9ssSPBZguOJYvnS2ly2ZUJ31EHkzHAULXGAWCt5oVGkzFg-boUuOrPasQ1ih-7sbEqp0QPka4rdU6xP84rMF9etOVa2GPs4zeej7S5Hm55rAdWKzVBB4XauqW-M-3tK68qbdwi30CCNzv1x-yuBSu_LI2XhwOAoMjX40yT1COsJHi0gzRIIMLbwYw">
+</div>
+</section>
+<!-- Philosophy Cards -->
+<section class="py-32 px-8 max-w-[1200px] mx-auto" id="filosofia">
+<h2 class="font-headline text-7xl uppercase mb-16 text-right outline-text">Filosofía Operativa</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="p-8 bg-black border-t-4 border-l-4 border-primary transform hover:scale-110 hover:-rotate-3 transition-all relative z-10 shadow-xl group">
+<div class="absolute top-0 right-0 w-8 h-8 bg-primary -translate-y-1/2 translate-x-1/2 transform rotate-45"></div>
+<h4 class="font-headline text-2xl text-white mb-6 uppercase group-hover:text-primary transition-colors">Estrategia Personalizada</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-l-2 border-primary/30 pl-4">No uso plantillas. Cada plan es una respuesta única a tu ADN artístico.</p>
+</div>
+<div class="p-8 bg-surface-container border-b-4 border-r-4 border-primary transform hover:scale-110 hover:rotate-3 transition-all relative z-10 shadow-xl group md:translate-y-8">
+<div class="absolute bottom-0 left-0 w-8 h-8 bg-primary translate-y-1/2 -translate-x-1/2 transform rotate-45"></div>
+<h4 class="font-headline text-2xl text-white mb-6 uppercase group-hover:text-primary transition-colors">Sin Improvisación</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-l-2 border-primary/30 pl-4">Cada movimiento está calculado. Eliminamos el ruido y el azar de tu carrera.</p>
+</div>
+<div class="p-8 bg-surface-container-high border-t-4 border-r-4 border-primary transform hover:scale-110 hover:-rotate-3 transition-all relative z-10 shadow-xl group lg:-translate-y-8">
+<div class="absolute top-0 left-0 w-8 h-8 bg-primary -translate-y-1/2 -translate-x-1/2 transform rotate-45"></div>
+<h4 class="font-headline text-2xl text-white mb-6 uppercase group-hover:text-primary transition-colors">Recursos con Propósito</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-l-2 border-primary/30 pl-4">Invertimos tiempo y capital solo donde genera un retorno estratégico real.</p>
+</div>
+<div class="p-8 bg-black border-b-4 border-l-4 border-primary transform hover:scale-110 hover:rotate-3 transition-all relative z-10 shadow-xl group">
+<div class="absolute bottom-0 right-0 w-8 h-8 bg-primary translate-y-1/2 translate-x-1/2 transform rotate-45"></div>
+<h4 class="font-headline text-2xl text-white mb-6 uppercase group-hover:text-primary transition-colors">Carrera Sostenible</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-l-2 border-primary/30 pl-4">Buscamos impacto hoy y longevidad mañana. Construimos legados.</p>
+</div>
+</div>
+</section>
+<!-- Final Ecosystem Convergence -->
+<section class="py-40 px-8 bg-black border-y-8 border-primary border-double relative overflow-hidden transform -skew-y-2">
+<div class="max-w-[1200px] mx-auto text-center relative z-20 transform skew-y-2">
+<span class="bg-white text-black px-4 py-2 font-label text-sm tracking-[0.5em] font-bold inline-block mb-12">ECOSYSTEM_CONVERGENCE</span>
+<div class="my-24 relative flex justify-center items-center">
+<!-- Circular branding convergence visualization -->
+<div class="w-80 h-80 md:w-[32rem] md:h-[32rem] border-4 border-primary/30 border-dashed rounded-full flex items-center justify-center animate-[spin_10s_linear_infinite] relative">
+<div class="absolute top-0 flex flex-col items-center transform -translate-y-1/2">
+<div class="w-6 h-6 bg-primary transform rotate-45"></div>
+<span class="font-label text-xs mt-4 tracking-widest text-primary bg-black px-2">IDENTITY</span>
+</div>
+<div class="absolute right-0 flex items-center transform translate-x-1/2">
+<span class="font-label text-xs mr-4 tracking-widest text-primary bg-black px-2">MUSIC</span>
+<div class="w-6 h-6 bg-primary transform rotate-45"></div>
+</div>
+<div class="absolute bottom-0 flex flex-col items-center transform translate-y-1/2">
+<span class="font-label text-xs mb-4 tracking-widest text-primary bg-black px-2">WEB</span>
+<div class="w-6 h-6 bg-primary transform rotate-45"></div>
+</div>
+<div class="absolute left-0 flex items-center transform -translate-x-1/2">
+<div class="w-6 h-6 bg-primary transform rotate-45"></div>
+<span class="font-label text-xs ml-4 tracking-widest text-primary bg-black px-2">PRESS</span>
+</div>
+</div>
+<div class="absolute flex flex-col items-center bg-black/80 p-8 border border-primary/50 backdrop-blur-sm">
+<img alt="Troke Produczone Logo" class="h-32 md:h-48 drop-shadow-[0_0_30px_rgba(230,0,33,1)] rounded-full" src="https://lh3.googleusercontent.com/aida/AP1WRLuGSRtJ_eufCtlJ02fQmfxJU9R5Nm5ywQF08axHVxZLLuoOJwaBDrL5mhV0DKkDKPzX8xH5euQs47N77uEmVvbUOtfDF5zX01kC6Tt_oumRx2T3hLT2r_WIJNMwNDckv6T_LUYLj2Mcv8R8mjuJJG0Uu50b3dWEZl8yinWESZVbck727opbcujz1AW9_pioil7IQzRBxBEfpWxGRdPoG2gH88U9kQ0qaw4Czerbxk1IdZMYn7BW751O1rpMWwrJ69gL-VUfKyCROw">
+<h3 class="font-headline text-5xl md:text-7xl mt-8 uppercase text-white glitch-text" data-text="Proyecto Artístico Profesional">Proyecto Artístico Profesional</h3>
+</div>
+</div>
+<div class="bg-surface-container inline-block p-8 border-l-8 border-primary mb-16 transform rotate-1">
+<p class="font-body text-xl text-on-surface-variant max-w-2xl mx-auto font-bold">
+                    La unión de todos los elementos bajo un mismo paraguas estratégico es lo que diferencia a un aficionado de un profesional.
+                </p>
+</div>
+<br>
+<a href="https://wa.me/56966362642" target="_blank" rel="noopener noreferrer" class="bg-transparent border-4 border-primary text-primary px-16 py-8 font-headline text-5xl tracking-widest hover:bg-primary hover:text-black transition-all shadow-[15px_15px_0px_rgba(230,0,33,0.5)] hover:shadow-none hover:translate-x-[15px] hover:translate-y-[15px] uppercase relative overflow-hidden group px-24 inline-block">
+<span class="relative z-10">Únete al Sistema</span>
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+</a>
+</div>
+<!-- Scanline Overlay -->
+<div class="absolute inset-0 scanlines opacity-50 pointer-events-none mix-blend-overlay"></div>
+</section>
+<!-- Footer (From JSON) -->
+<footer class="w-full py-16 px-8 flex flex-col md:flex-row justify-between items-center gap-8 bg-black border-t-8 border-primary relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+<div class="flex flex-col items-center md:items-start relative z-10">
+<span class="text-primary font-headline text-4xl outline-text">DIRECCIÓN ESTRATÉGICA</span>
+<p class="font-label text-label-meta uppercase text-on-surface-variant mt-4 tracking-[0.4em] text-[10px] bg-surface-container px-4 py-2 border border-outline-variant">© 2026<span class="" style="letter-spacing: 0.1em;">&nbsp;PROYECTO ARTÍSTICO PROFESIONAL // ALL RIGHTS RESERVED</span></p>
+</div>
+<div class="flex gap-8 relative z-10">
+<a class="text-on-surface-variant font-label text-[12px] tracking-widest uppercase hover:text-primary transition-all bg-surface-container px-4 py-2 border border-transparent hover:border-primary" href="#">TERMINOS</a>
+<a class="text-on-surface-variant font-label text-[12px] tracking-widest uppercase hover:text-primary transition-all bg-surface-container px-4 py-2 border border-transparent hover:border-primary" href="#">PRIVACIDAD</a>
+<a class="text-on-surface-variant font-label text-[12px] tracking-widest uppercase hover:text-primary transition-all bg-surface-container px-4 py-2 border border-transparent hover:border-primary" href="#">SOPORTE TÉCNICO</a>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button (Contextual Suppression Logic applied - hide on detailed roadmap) -->
+<a href="https://wa.me/56966362642" target="_blank" rel="noopener noreferrer" class="fixed bottom-8 right-8 w-16 h-16 bg-primary-container text-white flex items-center justify-center shadow-[0_0_20px_rgba(230,0,33,0.8)] z-50 hover:rotate-180 transition-all duration-700 transform hover:scale-110 border-2 border-white mix-blend-difference">
+<span class="w-4 h-4 bg-white transform rotate-45"></span>
+</a>
+<script>
+        // Micro-interaction for roadmap line illumination - Disabled for YOLO variant as layout is non-linear
+    </script>
+
+
+</body></html>

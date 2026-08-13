@@ -1,0 +1,452 @@
+<!DOCTYPE html><html class="dark" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>TROKE PRODUCZONE — Construye un Proyecto Artístico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Orbitron:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Orbitron:wght@100..900&amp;family=Space+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        :root {
+            --primary: #e60021;
+            --surface: #131314;
+        }
+        body {
+            background-color: var(--surface);
+            font-family: 'Space Mono', monospace;
+            color: #e4e2e2;
+            overflow-x: hidden;
+        }
+        .font-headline { font-family: 'Anton', sans-serif; }
+        .font-label { font-family: 'Orbitron', sans-serif; }
+        
+        /* Deconstructed Glitch Effects */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 83px, 0); }
+            20% { clip: rect(80px, 9999px, 32px, 0); }
+            40% { clip: rect(100px, 9999px, 50px, 0); }
+            60% { clip: rect(10px, 9999px, 90px, 0); }
+            80% { clip: rect(60px, 9999px, 40px, 0); }
+            100% { clip: rect(90px, 9999px, 10px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 20px, 0); }
+            20% { clip: rect(40px, 9999px, 80px, 0); }
+            40% { clip: rect(90px, 9999px, 10px, 0); }
+            60% { clip: rect(20px, 9999px, 100px, 0); }
+            80% { clip: rect(50px, 9999px, 60px, 0); }
+            100% { clip: rect(10px, 9999px, 90px, 0); }
+        }
+
+        .clip-polygon-1 { clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%); }
+        .clip-polygon-2 { clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+        .clip-polygon-3 { clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%); }
+
+        .outline-text {
+            -webkit-text-stroke: 2px var(--primary);
+            color: transparent;
+        }
+
+        /* Scanline Effect */
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 10;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .red-glow {
+            box-shadow: 0 0 20px rgba(230, 0, 33, 0.4);
+        }
+
+        .grid-line-effect {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .huge-bg-text {
+            font-size: 20vw;
+            line-height: 0.8;
+            color: rgba(255,255,255,0.02);
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "background": "#131314",
+                      "inverse-on-surface": "#303030",
+                      "inverse-primary": "#c0001a",
+                      "secondary-container": "#464747",
+                      "outline": "#af8783",
+                      "secondary-fixed": "#e3e2e2",
+                      "surface": "#131314",
+                      "on-tertiary-container": "#f9f9f9",
+                      "on-secondary": "#303031",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#c7c6c6",
+                      "on-secondary-fixed-variant": "#464747",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "surface-container": "#1f2020",
+                      "surface-variant": "#343535",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "surface-dim": "#131314",
+                      "on-background": "#e4e2e2",
+                      "primary-container": "#e60021",
+                      "on-tertiary": "#2f3131",
+                      "inverse-surface": "#e4e2e2",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#ffdad6",
+                      "on-primary-fixed-variant": "#930011",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-surface-variant": "#e8bcb8",
+                      "tertiary": "#c6c6c7",
+                      "on-secondary-container": "#b6b5b5",
+                      "primary": "#ffb3ad",
+                      "on-error": "#690005",
+                      "surface-container-high": "#2a2a2a",
+                      "tertiary-fixed": "#e2e2e2",
+                      "outline-variant": "#5e3f3c",
+                      "surface-container-highest": "#343535",
+                      "on-primary-fixed": "#410003",
+                      "on-primary-container": "#fff7f6",
+                      "secondary": "#c7c6c6",
+                      "surface-tint": "#ffb3ad",
+                      "on-surface": "#e4e2e2",
+                      "tertiary-container": "#717373",
+                      "on-primary": "#680009",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-bright": "#393939",
+                      "surface-container-low": "#1b1c1c",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Anton"],
+                      "display": ["Anton"],
+                      "body": ["Space Mono"],
+                      "label": ["Orbitron"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- ============ HEADER / NAV ============ -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-8 h-20 mix-blend-difference border-b-2 border-primary border-dashed">
+<div class="flex items-center gap-4 transform -skew-x-12">
+<span class="text-lg md:text-2xl font-headline text-primary glitch-text outline-text" data-text="TROKE PRODUCZONE">TROKE PRODUCZONE</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-4 border-primary pb-1 font-label text-[14px] tracking-[0.3em] uppercase transform hover:skew-x-12 transition-transform" href="index.html">INICIO</a>
+<a class="text-on-surface-variant font-label text-[14px] tracking-[0.3em] uppercase hover:text-primary transform hover:-skew-x-12 transition-transform" href="asesoria.html">ASESORÍA</a>
+<a class="text-on-surface-variant font-label text-[14px] tracking-[0.3em] uppercase hover:text-primary transform hover:skew-y-3 transition-transform" href="tarifario.html">TARIFARIO</a>
+</nav>
+<a href="https://wa.me/56966362642" target="_blank" rel="noopener noreferrer" class="bg-transparent border-2 border-primary-container text-primary-container px-4 md:px-6 py-2 font-label text-[10px] md:text-[12px] tracking-widest font-bold hover:bg-primary-container hover:text-white transition-all transform rotate-2 inline-block whitespace-nowrap">
+            INICIAR PROYECTO
+        </a>
+</header>
+
+<main class="pt-20 mx-auto overflow-hidden">
+
+<!-- ============ 01 — HERO ============ -->
+<section class="relative min-h-[95vh] flex flex-col justify-center items-center px-6 md:px-8 text-center grid-line-effect bg-surface-container-low mb-8 mt-8 clip-polygon-2 overflow-hidden">
+<div class="huge-bg-text left-[-10%] transform rotate-12 top-1/2">SYSTEM</div>
+<div class="huge-bg-text bottom-1/4 right-[-10%] transform -rotate-12 outline-text">ARTIST</div>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-background z-10 mix-blend-overlay"></div>
+<div class="relative z-20 max-w-5xl w-full mx-auto flex flex-col items-center">
+<div class="mb-6 inline-block relative">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div>
+<img alt="Troke Produczone Logo" class="h-24 md:h-32 mx-auto relative z-10 rounded-full" src="https://lh3.googleusercontent.com/aida/AP1WRLuGSRtJ_eufCtlJ02fQmfxJU9R5Nm5ywQF08axHVxZLLuoOJwaBDrL5mhV0DKkDKPzX8xH5euQs47N77uEmVvbUOtfDF5zX01kC6Tt_oumRx2T3hLT2r_WIJNMwNDckv6T_LUYLj2Mcv8R8mjuJJG0Uu50b3dWEZl8yinWESZVbck727opbcujz1AW9_pioil7IQzRBxBEfpWxGRdPoG2gH88U9kQ0qaw4Czerbxk1IdZMYn7BW751O1rpMWwrJ69gL-VUfKyCROw">
+</div>
+<span class="font-label text-[11px] md:text-xs tracking-[0.5em] text-primary uppercase bg-black/50 inline-block p-2 border-l-8 border-primary mb-8">
+                    [ SYSTEM: TROKE PRODUCZONE // ONLINE ]
+                </span>
+<h1 class="font-headline text-5xl sm:text-6xl md:text-8xl lg:text-[8.5rem] leading-[0.9] tracking-tighter mb-6 text-on-surface uppercase glitch-text" data-text="Construye un Proyecto Artístico">
+                    Construye un<br>
+<span class="text-primary-container">Proyecto Artístico.</span><br>
+<span class="outline-text inline-block transform skew-x-6">No solo canciones.</span>
+</h1>
+<p class="font-body text-base md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Estrategia, producción, identidad, audiovisual y herramientas digitales para artistas que quieren dejar de improvisar y empezar a construir un proyecto.
+                </p>
+<div class="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mt-4">
+<a href="asesoria.html" class="bg-primary-container text-white px-8 md:px-12 py-5 font-headline text-xl md:text-2xl tracking-wide hover:scale-105 transition-transform border-4 border-transparent hover:border-white shadow-[0_0_30px_rgba(230,0,33,0.8)] uppercase transform sm:-skew-x-12 inline-block">
+                        Conocer el Sistema
+                    </a>
+<a href="tarifario.html" class="bg-transparent border-4 border-primary text-primary px-8 md:px-12 py-5 font-headline text-xl md:text-2xl tracking-wide hover:scale-105 transition-transform hover:bg-primary hover:text-black uppercase transform sm:skew-x-12 inline-block">
+                        Ver Servicios y Precios
+                    </a>
+</div>
+</div>
+</section>
+
+<!-- ============ 02 — TU PROYECTO TIENE MÁS DE UNA PIEZA ============ -->
+<section class="py-24 md:py-32 px-6 md:px-8 max-w-[1200px] mx-auto relative">
+<div class="mb-16 md:mb-20 border-b-8 border-primary border-dotted pb-6 transform md:skew-y-1">
+<span class="bg-primary text-black px-2 py-1 font-label text-xs tracking-[0.3em] font-bold">MODULE_01</span>
+<h2 class="font-headline text-4xl sm:text-5xl md:text-7xl uppercase mt-4 outline-text">Tu Proyecto Tiene<br>Más de una Pieza.</h2>
+<p class="font-body text-secondary text-base md:text-lg max-w-2xl mt-6">Una canción puede ser el comienzo. Pero un proyecto artístico necesita dirección, identidad, producción, presencia y desarrollo.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+<div class="bg-surface-container-low p-6 md:p-8 border border-outline-variant hover:border-primary transition-all group relative overflow-hidden">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:text-black mb-4 relative z-10 block">badge</span>
+<h3 class="font-headline text-xl md:text-2xl uppercase relative z-10 group-hover:text-black mb-2">Identidad</h3>
+<p class="font-body text-xs md:text-sm text-on-surface-variant group-hover:text-black relative z-10 leading-relaxed">Quién eres y cómo te presentas.</p>
+</div>
+<div class="bg-surface-container p-6 md:p-8 border border-outline-variant hover:border-primary transition-all group relative overflow-hidden md:mt-8">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:text-black mb-4 relative z-10 block">target</span>
+<h3 class="font-headline text-xl md:text-2xl uppercase relative z-10 group-hover:text-black mb-2">Estrategia</h3>
+<p class="font-body text-xs md:text-sm text-on-surface-variant group-hover:text-black relative z-10 leading-relaxed">Qué quieres conseguir y cómo avanzar.</p>
+</div>
+<div class="bg-surface-container-high p-6 md:p-8 border border-outline-variant hover:border-primary transition-all group relative overflow-hidden">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:text-black mb-4 relative z-10 block">equalizer</span>
+<h3 class="font-headline text-xl md:text-2xl uppercase relative z-10 group-hover:text-black mb-2">Producción</h3>
+<p class="font-body text-xs md:text-sm text-on-surface-variant group-hover:text-black relative z-10 leading-relaxed">La música y los recursos que necesitas.</p>
+</div>
+<div class="bg-surface-container-highest p-6 md:p-8 border border-outline-variant hover:border-primary transition-all group relative overflow-hidden md:mt-12">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:text-black mb-4 relative z-10 block">campaign</span>
+<h3 class="font-headline text-xl md:text-2xl uppercase relative z-10 group-hover:text-black mb-2">Presencia</h3>
+<p class="font-body text-xs md:text-sm text-on-surface-variant group-hover:text-black relative z-10 leading-relaxed">Cómo mostrar tu proyecto al público.</p>
+</div>
+<div class="col-span-2 md:col-span-1 bg-surface-container-low p-6 md:p-8 border border-outline-variant hover:border-primary transition-all group relative overflow-hidden">
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+<span class="material-symbols-outlined text-3xl md:text-4xl text-primary group-hover:text-black mb-4 relative z-10 block">terminal</span>
+<h3 class="font-headline text-xl md:text-2xl uppercase relative z-10 group-hover:text-black mb-2">Desarrollo</h3>
+<p class="font-body text-xs md:text-sm text-on-surface-variant group-hover:text-black relative z-10 leading-relaxed">Las herramientas digitales que sostienen todo lo anterior.</p>
+</div>
+</div>
+</section>
+
+<!-- ============ 03 — ¿EN QUÉ PUNTO ESTÁ TU PROYECTO? ============ -->
+<section class="py-24 md:py-32 px-6 md:px-8 bg-black border-y-8 border-primary border-dashed relative overflow-hidden">
+<div class="huge-bg-text top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-6 opacity-5">STATUS</div>
+<div class="max-w-[1200px] mx-auto relative z-10">
+<div class="mb-16 md:mb-20 text-center transform md:-skew-y-2">
+<span class="bg-white text-black px-3 py-1 font-label text-xs tracking-[0.3em] font-bold inline-block mb-4">MODULE_02 // DIAGNÓSTICO</span>
+<h2 class="font-headline text-4xl sm:text-5xl md:text-7xl uppercase mt-2 outline-text">¿En Qué Punto Está<br>Tu Proyecto?</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<a href="asesoria.html" class="group bg-surface-container-low p-8 border-l-4 border-primary hover:bg-primary transition-all block">
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black block mb-4">01 // ESTRATEGIA</span>
+<h3 class="font-headline text-2xl md:text-3xl uppercase text-white group-hover:text-black mb-3">Quiero Empezar</h3>
+<p class="font-body text-sm text-on-surface-variant group-hover:text-black mb-6 leading-relaxed">Tengo ideas, pero todavía no tengo un proyecto definido.</p>
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black">→ DIRECCIÓN ESTRATÉGICA</span>
+</a>
+<a href="tarifario.html" class="group bg-surface-container p-8 border-l-4 border-primary hover:bg-primary transition-all block">
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black block mb-4">02 // PRODUCCIÓN</span>
+<h3 class="font-headline text-2xl md:text-3xl uppercase text-white group-hover:text-black mb-3">Ya Tengo Música</h3>
+<p class="font-body text-sm text-on-surface-variant group-hover:text-black mb-6 leading-relaxed">Necesito producir, mejorar o preparar mis lanzamientos.</p>
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black">→ PRODUCCIÓN MUSICAL</span>
+</a>
+<a href="tarifario.html" class="group bg-surface-container-high p-8 border-l-4 border-primary hover:bg-primary transition-all block">
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black block mb-4">03 // IDENTIDAD</span>
+<h3 class="font-headline text-2xl md:text-3xl uppercase text-white group-hover:text-black mb-3">Necesito una Identidad</h3>
+<p class="font-body text-sm text-on-surface-variant group-hover:text-black mb-6 leading-relaxed">Quiero que mi proyecto tenga una imagen profesional.</p>
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black">→ BRANDING</span>
+</a>
+<a href="tarifario.html" class="group bg-surface-container-highest p-8 border-l-4 border-primary hover:bg-primary transition-all block">
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black block mb-4">04 // LANZAMIENTO</span>
+<h3 class="font-headline text-2xl md:text-3xl uppercase text-white group-hover:text-black mb-3">Quiero Lanzar</h3>
+<p class="font-body text-sm text-on-surface-variant group-hover:text-black mb-6 leading-relaxed">Tengo material y necesito presentarlo correctamente.</p>
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black">→ AUDIOVISUAL + LANZAMIENTO</span>
+</a>
+<a href="tarifario.html" class="group bg-surface-container-low p-8 border-l-4 border-primary hover:bg-primary transition-all block md:col-span-2 lg:col-span-1">
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black block mb-4">05 // DIGITAL</span>
+<h3 class="font-headline text-2xl md:text-3xl uppercase text-white group-hover:text-black mb-3">Necesito mi Propio Espacio</h3>
+<p class="font-body text-sm text-on-surface-variant group-hover:text-black mb-6 leading-relaxed">Quiero una web o presencia digital profesional.</p>
+<span class="font-label text-[10px] tracking-widest text-primary group-hover:text-black">→ DESARROLLO WEB</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- ============ 04 — UN PROYECTO. UN SISTEMA. ============ -->
+<section class="py-24 md:py-32 px-6 md:px-8 bg-surface-container-lowest relative overflow-hidden" id="sistema">
+<div class="huge-bg-text top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">FLOW</div>
+<div class="max-w-[1200px] mx-auto relative z-10">
+<div class="mb-16 text-center">
+<span class="bg-primary text-black px-2 py-1 font-label text-xs tracking-[0.3em] font-bold">MODULE_03 // METODOLOGÍA</span>
+<h2 class="font-headline text-4xl sm:text-5xl md:text-7xl uppercase mt-4 mb-6 glitch-text" data-text="Un Proyecto. Un Sistema.">Un Proyecto.<br>Un Sistema.</h2>
+<p class="font-body text-secondary text-base md:text-lg max-w-2xl mx-auto">Un proyecto profesional necesita más que buenas ideas. Necesita dirección, ejecución y continuidad.</p>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4 relative mb-16">
+<div class="absolute top-1/2 left-0 w-full h-2 bg-primary/20 hidden md:block transform -translate-y-1/2 border-y border-primary/50 border-dashed"></div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-20 h-20 md:w-24 md:h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-3xl md:text-4xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[8px_8px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">01</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-[10px] tracking-widest mt-6 px-3 py-2 uppercase text-center">DESCUBRIMIENTO</span>
+</div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-20 h-20 md:w-24 md:h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-3xl md:text-4xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[8px_8px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">02</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-[10px] tracking-widest mt-6 px-3 py-2 uppercase text-center">DIRECCIÓN ESTRATÉGICA</span>
+</div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-20 h-20 md:w-24 md:h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-3xl md:text-4xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[8px_8px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">03</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-[10px] tracking-widest mt-6 px-3 py-2 uppercase text-center">PRODUCCIÓN</span>
+</div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-20 h-20 md:w-24 md:h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-3xl md:text-4xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[8px_8px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">04</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-[10px] tracking-widest mt-6 px-3 py-2 uppercase text-center">LANZAMIENTO</span>
+</div>
+<div class="flex flex-col items-center group relative z-10">
+<div class="w-20 h-20 md:w-24 md:h-24 bg-black border-4 border-primary flex items-center justify-center font-headline text-3xl md:text-4xl text-primary group-hover:bg-primary group-hover:text-black transition-colors transform rotate-45 group-hover:rotate-0 shadow-[8px_8px_0px_rgba(230,0,33,0.4)]">
+<span class="transform -rotate-45 group-hover:rotate-0 inline-block">05</span>
+</div>
+<span class="bg-black border border-primary/50 text-white font-label text-[10px] tracking-widest mt-6 px-3 py-2 uppercase text-center">CRECIMIENTO</span>
+</div>
+</div>
+<div class="text-center">
+<a href="asesoria.html" class="bg-transparent border-4 border-primary text-primary px-8 md:px-12 py-4 md:py-5 font-label text-sm tracking-[0.3em] uppercase hover:bg-primary hover:text-black transition-all inline-block">CONOCER LA METODOLOGÍA →</a>
+</div>
+</div>
+</section>
+
+<!-- ============ 05 — QUÉ PUEDO AYUDARTE A CONSTRUIR ============ -->
+<section class="py-24 md:py-32 px-6 md:px-8 max-w-[1200px] mx-auto relative">
+<div class="mb-16 text-center">
+<span class="bg-primary text-black px-2 py-1 font-label text-xs tracking-[0.3em] font-bold">MODULE_04 // CATÁLOGO</span>
+<h2 class="font-headline text-4xl sm:text-5xl md:text-7xl uppercase mt-4 outline-text">Puedo Ayudarte<br>a Construir:</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 mb-16">
+<div class="bg-surface-container-low p-6 border-t-4 border-primary">
+<span class="material-symbols-outlined text-3xl text-primary mb-4 block">equalizer</span>
+<h3 class="font-headline text-xl uppercase text-white mb-2">Producción Musical</h3>
+<p class="font-label text-[10px] text-industrial-steel tracking-widest uppercase leading-relaxed">Beats · Mezcla · Mastering</p>
+</div>
+<div class="bg-surface-container p-6 border-t-4 border-primary">
+<span class="material-symbols-outlined text-3xl text-primary mb-4 block">branding_watermark</span>
+<h3 class="font-headline text-xl uppercase text-white mb-2">Identidad</h3>
+<p class="font-label text-[10px] text-industrial-steel tracking-widest uppercase leading-relaxed">Logotipo · Portadas · Branding</p>
+</div>
+<div class="bg-surface-container-high p-6 border-t-4 border-primary">
+<span class="material-symbols-outlined text-3xl text-primary mb-4 block">videocam</span>
+<h3 class="font-headline text-xl uppercase text-white mb-2">Audiovisual</h3>
+<p class="font-label text-[10px] text-industrial-steel tracking-widest uppercase leading-relaxed">Promo · Visualizer · VideoLyrics · VideoClip</p>
+</div>
+<div class="bg-surface-container-highest p-6 border-t-4 border-primary">
+<span class="material-symbols-outlined text-3xl text-primary mb-4 block">terminal</span>
+<h3 class="font-headline text-xl uppercase text-white mb-2">Digital</h3>
+<p class="font-label text-[10px] text-industrial-steel tracking-widest uppercase leading-relaxed">Web · Presencia Digital · Herramientas</p>
+</div>
+<div class="bg-surface-container-low p-6 border-t-4 border-primary md:col-span-2 lg:col-span-1">
+<span class="material-symbols-outlined text-3xl text-primary mb-4 block">route</span>
+<h3 class="font-headline text-xl uppercase text-white mb-2">Estrategia</h3>
+<p class="font-label text-[10px] text-industrial-steel tracking-widest uppercase leading-relaxed">Dirección · Planificación · Lanzamiento</p>
+</div>
+</div>
+<div class="text-center">
+<a href="tarifario.html" class="bg-primary-container text-white px-8 md:px-12 py-5 font-headline text-xl md:text-2xl tracking-wide hover:scale-105 transition-transform uppercase transform inline-block shadow-[0_0_30px_rgba(230,0,33,0.5)]">VER TARIFARIO 2026 →</a>
+</div>
+</section>
+
+<!-- ============ 06 — DIFERENCIACIÓN ============ -->
+<section class="py-32 md:py-40 px-6 md:px-8 bg-black border-y-8 border-primary border-double relative overflow-hidden transform md:-skew-y-2">
+<div class="max-w-[1100px] mx-auto text-center relative z-20 transform md:skew-y-2">
+<span class="bg-white text-black px-4 py-2 font-label text-xs md:text-sm tracking-[0.4em] font-bold inline-block mb-10">DECLARACIÓN_DE_SISTEMA</span>
+<h2 class="font-headline text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.95] mb-10">
+<span class="text-white">Una canción es</span><br>
+<span class="text-white">un producto.</span><br>
+<span class="text-outline-red">Un proyecto artístico</span><br>
+<span class="text-primary">es un sistema.</span>
+</h2>
+<p class="font-body text-base md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                    El objetivo no es solamente producir una canción, diseñar una portada o crear una web. Es conectar cada pieza para que el proyecto tenga dirección, identidad y capacidad de crecer.
+                </p>
+</div>
+</section>
+
+<!-- ============ 07 — CTA FINAL ============ -->
+<section class="py-32 md:py-40 px-6 md:px-8 relative overflow-hidden bg-surface-container-low clip-polygon-2">
+<div class="huge-bg-text left-[-10%] transform rotate-12 top-1/2 opacity-5">LEVEL UP</div>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-background z-10 mix-blend-overlay"></div>
+<div class="max-w-4xl mx-auto text-center relative z-20">
+<h2 class="font-headline text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.95] mb-12 text-on-surface glitch-text" data-text="¿Tienes un proyecto que quieres llevar al siguiente nivel?">
+                    ¿Tienes un proyecto<br>que quieres llevar<br><span class="text-primary-container outline-text">al siguiente nivel?</span>
+</h2>
+<a href="https://wa.me/56966362642" target="_blank" rel="noopener noreferrer" class="bg-transparent border-4 border-primary text-primary px-10 md:px-16 py-6 md:py-8 font-headline text-2xl md:text-4xl tracking-widest hover:bg-primary hover:text-black transition-all shadow-[15px_15px_0px_rgba(230,0,33,0.5)] hover:shadow-none hover:translate-x-[10px] hover:translate-y-[10px] uppercase relative overflow-hidden group inline-block">
+<span class="relative z-10">Hablemos de tu Proyecto →</span>
+<div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+</a>
+</div>
+<div class="absolute inset-0 scanlines opacity-50 pointer-events-none mix-blend-overlay"></div>
+</section>
+
+<!-- ============ 08 — FOOTER ============ -->
+<footer class="w-full py-16 px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-8 bg-black border-t-8 border-primary relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+<div class="flex flex-col items-center md:items-start relative z-10">
+<span class="text-primary font-headline text-3xl md:text-4xl outline-text">TROKE PRODUCZONE</span>
+<p class="font-label text-label-meta uppercase text-on-surface-variant mt-4 tracking-[0.4em] text-[10px] bg-surface-container px-4 py-2 border border-outline-variant">© 2026<span style="letter-spacing: 0.1em;">&nbsp;PROYECTO ARTÍSTICO PROFESIONAL // ALL RIGHTS RESERVED</span></p>
+</div>
+<div class="flex gap-4 md:gap-8 relative z-10">
+<a class="text-on-surface-variant font-label text-[11px] md:text-[12px] tracking-widest uppercase hover:text-primary transition-all bg-surface-container px-4 py-2 border border-transparent hover:border-primary" href="index.html">INICIO</a>
+<a class="text-on-surface-variant font-label text-[11px] md:text-[12px] tracking-widest uppercase hover:text-primary transition-all bg-surface-container px-4 py-2 border border-transparent hover:border-primary" href="asesoria.html">ASESORÍA</a>
+<a class="text-on-surface-variant font-label text-[11px] md:text-[12px] tracking-widest uppercase hover:text-primary transition-all bg-surface-container px-4 py-2 border border-transparent hover:border-primary" href="tarifario.html">TARIFARIO</a>
+</div>
+</footer>
+</main>
+
+<!-- Floating Action Button -->
+<a href="https://wa.me/56966362642" target="_blank" rel="noopener noreferrer" class="fixed bottom-8 right-8 w-16 h-16 bg-primary-container text-white flex items-center justify-center shadow-[0_0_20px_rgba(230,0,33,0.8)] z-50 hover:rotate-180 transition-all duration-700 transform hover:scale-110 border-2 border-white mix-blend-difference">
+<span class="w-4 h-4 bg-white transform rotate-45"></span>
+</a>
+</body></html>
